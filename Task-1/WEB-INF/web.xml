@@ -1,0 +1,50 @@
+<web-app>
+    <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+    <servlet-name>RegisterServlet</servlet-name>
+    <servlet-class>RegisterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    <servlet-name>RegisterServlet</servlet-name>
+    <url-pattern>/RegisterServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CancellationServlet</servlet-name>
+        <servlet-class>CancellationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CancellationServlet</servlet-name>
+        <url-pattern>/CancellationServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TrainNameServlet</servlet-name>
+        <servlet-class>TrainNameServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TrainNameServlet</servlet-name>
+        <url-pattern>/TrainNameServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+    <servlet-name>ReservationServlet</servlet-name>
+    <servlet-class>ReservationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    <servlet-name>ReservationServlet</servlet-name>
+    <url-pattern>/ReservationServlet</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
+    <welcome-file>login.html</welcome-file>
+    </welcome-file-list>
+</web-app>

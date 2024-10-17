@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancel Reservation</title>
+    <link href="styles.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: white;
+            margin: 0;
+            padding: 10px;
+        }
+        .main{
+            position:absolute;
+            top:25%;
+            left: 50%;
+            transform: translate(-50%, 50%);
+        }
+        .container {
+            border:2px solid white;
+            backdrop-filter: blur(20px);
+            max-width: 400px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            margin-top: 10px;
+            display: block;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            margin-top: 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        input[type="submit"]:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container1">
+        <nav class="navbar">
+        <h2>Train Reservation</h2>
+        <ul class="navlinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="reservation.html">Reservation</a></li>
+        <li><a href="cancellation.html">Cancel</a></li>
+        <li><a href="contactUs.html">Contact Us</a></li>
+        </ul>
+        </nav>
+        </div>
+    </header>
+    <main class="main">
+    <div class="container">
+        <h2 style="text-align: center; color: white;">Cancel Reservation</h2>
+        <form action="CancellationServlet" method="post">
+            <label for="pnrNumber" style="color: white;">PNR Number:</label>
+            <input type="text" id="pnrNumber" name="pnrNumber" placeholder="pnr number" required>
+            <input type="hidden" name="action" value="fetch">
+            <input type="submit" value="Get Reservation Details">
+        </form>
+    </div>
+    </main>
+</body>
+</html>

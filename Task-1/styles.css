@@ -1,0 +1,42 @@
+.navbar{
+    background-color: rgb(60, 60, 246);
+    color: white;
+    padding: 10px;
+}
+
+.navlinks{
+    font-size: 20px;
+    list-style-type:none;
+    display: flex;
+    justify-content: right;
+}
+
+.navlinks li{
+    margin-right: 20px;
+}
+
+.navlinks a{
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s;
+}
+
+.navlinks a:hover{
+    color:black;
+}
+
+.navbar.active.navlinks{
+    display: flex;
+}
+
+.container1{
+    border:2px solid white;
+    backdrop-filter: blur(10px);
+}
+
+body{
+    background-image: url('th.jpeg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}

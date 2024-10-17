@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation Form</title>
+    <link href="styles.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: white;
+            margin: 0;
+            padding: 10px;
+        }
+        #container {
+            border:2px solid white;
+            backdrop-filter: blur(20px);
+            max-width: 600px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            margin-top: 10px;
+            display: block;
+            font-size: 20px;
+        }
+        input[type="text"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            margin-top: 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        input[type="submit"]:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container1">
+        <nav class="navbar">
+        <h2>Train Reservation</h2>
+        <ul class="navlinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="reservation.html">Reservation</a></li>
+        <li><a href="cancellation.html">Cancel</a></li>
+        <li><a href="contactUs.html">Contact Us</a></li>
+        </ul>
+        </nav>
+        </div>
+    </header>
+    <main>
+    <div id="container">
+        <h1 style="text-align: center;">Reservation Form</h1>
+        <form action="ReservationServlet" method="post" id="reservation" class="reservation">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter Full Name" required>
+
+            <label for="trainNo">Train Number:</label>
+            <input type="text" id="trainNo" name="trainNo" placeholder="Train Number" oninput="fetchTrainName()" required>
+
+            <label for="trainName">Train Name:</label>
+            <input type="text" id="trainName" name="trainName" readonly>
+
+            <label for="classType">Class Type:</label>
+            <select id="classType" name="classType" required>
+                <option value="General">General</option>
+                <option value="Sleeper">Sleeper</option>
+                <option value="AC">A/C</option>
+            </select>
+
+            <label for="doj">Date of Journey:</label>
+            <input type="date" id="doj" name="doj" required>
+
+            <label for="startFrom">Starting From:</label>
+            <input type="text" id="startFrom" name="startFrom" required>
+
+            <label for="destination">Destination:</label>
+            <input type="text" id="destination" name="destination" required>
+
+            <input type="submit" value="Register">
+        </form>
+        <div id="result"></div>
+    </div>
+    <script>
+        function fetchTrainName() {
+            var trainNo = document.getElementById("trainNo").value;
+
+            if (trainNo) {
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "TrainNameServlet", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        document.getElementById("trainName").value = xhr.responseText;
+                    }
+                };
+                xhr.send("trainNo=" + encodeURIComponent(trainNo));
+            } else {
+                document.getElementById("trainName").value = "";
+            }
+        }
+    </script>
+    </main>
+</body>
+</html>
