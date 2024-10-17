@@ -70,13 +70,14 @@ public class NumberGuessingGame extends JFrame {
                 resultArea.append("Greater!! try again\n");
             } else {
                 resultArea.append("Correct! you have guesses the number!!!!!\n");
-                totalScore += 10;
+                int scoreGained = calculateScore(10 - chancesLeft);
+                totalScore += scoreGained;
                 scoreLabel.setText("Score: " + totalScore);
                 JOptionPane.showMessageDialog(this,
-                        "🎉 Congratulations! You've guessed the number! 🎉\n+10 points gained!",
+                        "🎉 Congratulations! You've guessed the number! 🎉\n" + scoreGained + " points gained!",
                         "Correct Guess!",
                         JOptionPane.INFORMATION_MESSAGE);
-                resultArea.append("+10 points gained!\n");
+                resultArea.append("+" + scoreGained + " points gained!\n");
                 startNewRound();
                 return;
             }
@@ -89,6 +90,33 @@ public class NumberGuessingGame extends JFrame {
             scoreLabel.setText("Score: " + totalScore);
         } catch (NumberFormatException e) {
             resultArea.append("Invalid input. Please enter a valid integer\n");
+        }
+    }
+
+    private int calculateScore(int attempts) {
+        switch (attempts) {
+            case 1:
+                return 10;
+            case 2:
+                return 9;
+            case 3:
+                return 8;
+            case 4:
+                return 7;
+            case 5:
+                return 6;
+            case 6:
+                return 5;
+            case 7:
+                return 4;
+            case 8:
+                return 3;
+            case 9:
+                return 2;
+            case 10:
+                return 1;
+            default:
+                return 0;
         }
     }
 
