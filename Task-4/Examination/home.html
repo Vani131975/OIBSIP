@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="homestyles.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div>
+        <div class="navbar">
+            <h1>Welcome..</h1>
+            <div class="user-info">
+                <span id="username" class="username"></span>
+                <button class="signout-button" onclick="signOut()">Sign Out</button>
+                <button class="update-button" onclick="openUpdateProfile()">⚙️</button>
+            </div>
+        </div>
+        <div class="overlay" id="overlay" onclick="closeUpdateProfile()"></div>
+        <div class="iframe-container" id="iframeContainer">
+            <button class="go-back-button" onclick="closeUpdateProfile()">✖️</button>
+            <iframe id="updateIframe" src="updateProfile.html" width="100%" height="calc(100% - 30px)"></iframe>
+        </div>  
+        <h2>Choose Test</h2>
+    <div class="selection">
+        <label for="subjectSelect">Select Subject:</label>
+        <select id="subjectSelect" onchange="loadChapters()">
+            <option value="" disabled selected>Select a subject</option>
+            <option value="webTech">Web Technologies</option>
+            <option value="dbms">Database Management</option>
+            <option value="ml">Machine Learning</option>
+            <option value="ai">Artificial Intelligence</option>
+            <option value="imageProcessing">Image Processing</option>
+        </select>
+    </div>
+    <div class="selection" id="chapterSelectContainer" style="display:none;">
+        <label for="chapterSelect">Select Chapter:</label>
+        <select id="chapterSelect">
+            <option value="" disabled selected>Select a chapter</option>
+        </select>
+    </div>
+    <button id="startTestButton" style="width:150px;margin-top: 10px; display:none;justify-content: center;text-align: center;color: black;background-color: aquamarine;" onclick="startTest()">Start Test</button> 
+    
+    <div id="testContainer" style="display:none;">
+        <h1>Test</h1>
+        <div id="timer">Time Remaining: <span id="time">15:00</span> minutes</div>
+        <div id="questionsContainer"></div>
+        <div class="navigation-buttons">
+            <button onclick="submitTest()">Submit Test</button>
+            <button onclick="previousQuestion()">Previous</button>
+            <button onclick="nextQuestion()">Next</button>
+            <button onclick="markForReview()">Mark for Review</button>
+        </div>
+    </div>
+
+    <script src="test.js"></script>     
+        <script src="homeScript.js"></script>
+    </div>
+    <div id="testContainer" style="display:none;"></div>
+</body>
+</html>

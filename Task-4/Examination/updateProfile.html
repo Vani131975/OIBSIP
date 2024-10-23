@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Profile</title>
+    <style>
+        .updateForm {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="text-align: center;">Update Profile</h2>
+    <form id="updateForm" class="updateForm" action="updateProfile" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required readonly><br><br>
+        
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+        
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" name="phone" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+        
+        <label for="confirm_password">Confirm Password:</label>
+        <input type="password" id="confirm_password" name="confirm_password" required><br>
+
+        <input type="submit" value="Update" style="background-color: #007bff; color: white; width: 100px; height: 40px;">
+    </form>
+
+    <script>
+        fetch('getUsername') 
+            .then(response => response.text())
+            .then(username => {
+                document.getElementById('username').value = username;
+                fetch(`getUserDetails?username=${username}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('name').value = data.name || '';
+                        document.getElementById('email').value = data.email || '';
+                        document.getElementById('phone').value = data.phone || '';
+                    });
+            });
+    </script>
+</body>
+</html>
